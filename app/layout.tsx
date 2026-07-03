@@ -13,6 +13,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  viewportFit: "cover",
+  themeColor: "#D92D5A",
 };
 
 export default function RootLayout({
@@ -22,6 +24,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#D92D5A" />
+      </head>
       <body>
         <CartProvider>
           <div className="relative mx-auto flex min-h-screen max-w-app flex-col bg-white shadow-sm">

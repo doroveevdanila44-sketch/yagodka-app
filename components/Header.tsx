@@ -9,7 +9,13 @@ export default function Header() {
   const { count } = useCart();
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between bg-white/95 px-4 py-3 backdrop-blur">
+    <header
+      className="sticky top-0 z-20 flex items-center justify-between px-4 py-3 backdrop-blur"
+      style={{
+        paddingTop: "calc(0.75rem + env(safe-area-inset-top))",
+        backgroundColor: "#FFFFFF",
+      }}
+    >
       <div className="w-9" />
       <Link href="/" className="flex items-center">
         <Image

@@ -22,7 +22,10 @@ export default function TabBar() {
   const { count } = useCart();
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 mx-auto flex max-w-app items-stretch border-t border-light bg-white">
+    <nav
+      className="fixed inset-x-0 bottom-0 z-30 mx-auto flex max-w-app items-stretch border-t border-light bg-white"
+      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+    >
       {tabs.map(({ href, label, Icon }) => {
         const active =
           href === "/" ? pathname === "/" : pathname.startsWith(href);
