@@ -124,7 +124,7 @@ export default function HomePage() {
         <div className="flex items-center gap-4">
           <div className="h-[280px] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
-              src="/images/mixes-banner.jpg"
+              src="/images/mixes-banner-v2.jpg"
               alt="Ягодные миксы"
               width={120}
               height={280}
