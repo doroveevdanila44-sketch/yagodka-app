@@ -54,14 +54,14 @@ export default function HomePage() {
 
       {/* SECTION 2 — Ягоды (фото слева, текст справа) */}
       <section className="bg-white px-4 py-12">
-        <div className="flex items-center gap-4">
-          <div className="h-[400px] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-white">
+        <div className="flex items-stretch gap-4">
+          <div className="relative w-[120px] shrink-0 self-stretch overflow-hidden rounded-2xl bg-white">
             <Image
               src="/images/berries-banner.jpg"
               alt="Северные ягоды"
-              width={120}
-              height={400}
-              className="h-full w-full object-contain"
+              fill
+              sizes="120px"
+              className="w-full h-full object-cover object-center"
             />
           </div>
           <div className="flex-1">
