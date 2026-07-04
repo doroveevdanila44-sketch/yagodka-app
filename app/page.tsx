@@ -122,12 +122,12 @@ export default function HomePage() {
       {/* SECTION 4 — Миксы (фото слева, текст справа) */}
       <section className="bg-white px-4 py-12">
         <div className="flex items-center gap-4">
-          <div className="h-[400px] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-white">
+          <div className="h-[280px] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
               src="/images/mixes-banner.jpg"
               alt="Ягодные миксы"
               width={120}
-              height={400}
+              height={280}
               className="h-full w-full object-contain"
             />
           </div>
