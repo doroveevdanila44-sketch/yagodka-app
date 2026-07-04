@@ -88,7 +88,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           onClick={handleAdd}
           className="mt-6 w-full rounded-2xl bg-brand py-3.5 text-base font-semibold text-white active:bg-accent"
         >
-          {added ? "Добавлено ✓" : `В корзину · ${formatPrice(price)}`}
+          {added ? "Добавлено" : `В корзину · ${formatPrice(price)}`}
         </button>
       </div>
     </div>

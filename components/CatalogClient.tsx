@@ -110,7 +110,7 @@ export default function CatalogClient({
               isActive ? "bg-brand text-white" : "bg-white text-brand"
             }`}
           >
-            {mood.emoji} {mood.label}
+            {mood.label}
           </button>
         );
       })}

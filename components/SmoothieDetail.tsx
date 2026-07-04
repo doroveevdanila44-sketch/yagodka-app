@@ -105,7 +105,7 @@ export default function SmoothieDetail({ smoothie }: { smoothie: Smoothie }) {
         onClick={handleAdd}
         className="mt-6 w-full rounded-2xl bg-brand py-3.5 text-base font-semibold text-white active:bg-accent"
       >
-        {added ? "Добавлено ✓" : "Заказать"}
+        {added ? "Добавлено" : "Заказать"}
       </button>
     </div>
   );

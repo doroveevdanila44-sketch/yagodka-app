@@ -144,13 +144,13 @@ export type MoodSlug =
   | "fresh"
   | "evening";
 
-export const moodOptions: { slug: MoodSlug; emoji: string; label: string }[] = [
-  { slug: "morning", emoji: "🌅", label: "Начать день" },
-  { slug: "energy", emoji: "⚡", label: "Зарядиться" },
-  { slug: "happy", emoji: "😊", label: "Настроение" },
-  { slug: "relax", emoji: "🌿", label: "Отдохнуть" },
-  { slug: "fresh", emoji: "❄️", label: "Освежиться" },
-  { slug: "evening", emoji: "🌙", label: "Вечер" },
+export const moodOptions: { slug: MoodSlug; label: string }[] = [
+  { slug: "morning", label: "Начать день" },
+  { slug: "energy", label: "Зарядиться" },
+  { slug: "happy", label: "Настроение" },
+  { slug: "relax", label: "Отдохнуть" },
+  { slug: "fresh", label: "Освежиться" },
+  { slug: "evening", label: "Вечер" },
 ];
 
 export type Mix = {

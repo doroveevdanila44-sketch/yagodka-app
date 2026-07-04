@@ -12,7 +12,7 @@ export default function MoodTags({ moods }: { moods: MoodSlug[] }) {
           key={mood.slug}
           className="rounded-full bg-light px-3 py-1 text-xs font-medium text-brand"
         >
-          {mood.emoji} {mood.label}
+          {mood.label}
         </span>
       ))}
     </div>
