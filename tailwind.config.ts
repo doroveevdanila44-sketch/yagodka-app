@@ -9,7 +9,7 @@ const config: Config = {
     extend: {
       colors: {
         brand: "#F39A34",
-        accent: "#F39A34",
+        accent: "#E08A24",
         light: "#FFF3E0",
         ink: "#1A1A1A",
       },
