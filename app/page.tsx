@@ -29,26 +29,23 @@ export default function HomePage() {
   return (
     <div>
       {/* SECTION 1 — Hero */}
-      <section className="flex min-h-screen flex-col justify-center gap-6 bg-white px-4 py-12">
+      <section className="flex flex-col gap-6 bg-white px-4 pt-8">
         <div className="flex items-center gap-4">
           <div className="flex-1">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand">
-              Камчатка · Сезон 2025
-            </p>
-            <h1 className="mt-2 text-3xl font-bold leading-tight text-ink">
+            <h1 className="text-3xl font-bold leading-tight text-ink">
               Свежие ягоды Камчатки
             </h1>
             <p className="mt-2 text-sm text-gray-500">
               Собраны вручную. Доставлены свежими.
             </p>
           </div>
-          <div className="relative aspect-square w-2/5 shrink-0">
+          <div className="relative min-h-[200px] w-1/2 shrink-0">
             <Image
               src="/images/banner.png"
               alt="Ягоды Камчатки"
               fill
               priority
-              sizes="160px"
+              sizes="175px"
               className="object-contain"
             />
           </div>
@@ -72,14 +69,14 @@ export default function HomePage() {
 
       {/* SECTION 2 — Ягоды (фото слева, текст справа) */}
       <section className="bg-white px-4 py-12">
-        <div className="flex items-stretch gap-4">
-          <div className="relative w-2/5 shrink-0 overflow-hidden rounded-2xl bg-white">
+        <div className="flex items-center gap-4">
+          <div className="relative h-[280px] w-[140px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
-              src="/images/irga.jpg"
+              src="/images/berries-collage.jpg"
               alt="Северные ягоды"
               fill
-              sizes="150px"
-              className="object-cover"
+              sizes="140px"
+              className="object-contain"
             />
           </div>
           <div className="flex-1">
@@ -106,7 +103,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 3 — Смузи (текст слева, фото справа) */}
-      <section className="bg-[#FFF5E6] px-4 py-12">
+      <section className="bg-white px-4 py-12">
         <div className="flex items-center gap-4">
           <div className="flex-1">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand">
@@ -125,12 +122,12 @@ export default function HomePage() {
               Выбрать смузи
             </Link>
           </div>
-          <div className="relative aspect-square w-2/5 shrink-0 overflow-hidden rounded-2xl bg-white">
+          <div className="relative h-[280px] w-[140px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
-              src="/images/smoothies/taezhniy-smoothie.jpg"
+              src="/images/smoothies-collage.jpg"
               alt="Смузи"
               fill
-              sizes="150px"
+              sizes="140px"
               className="object-contain"
             />
           </div>
