@@ -4,7 +4,13 @@ import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import MixCard from "./MixCard";
 import SmoothieCard from "./SmoothieCard";
-import type { Mix, Product, Smoothie } from "@/lib/products";
+import {
+  moodOptions,
+  type Mix,
+  type MoodSlug,
+  type Product,
+  type Smoothie,
+} from "@/lib/products";
 
 type TasteFilter = {
   label: string;
@@ -57,6 +63,12 @@ export default function CatalogClient({
 }) {
   const [category, setCategory] = useState<Category>("berries");
   const [tasteIndex, setTasteIndex] = useState(0);
+  const [moodSlug, setMoodSlug] = useState<MoodSlug | null>(null);
+
+  const changeCategory = (next: Category) => {
+    setCategory(next);
+    setMoodSlug(null); // сбрасываем настроение при смене вкладки
+  };
 
   const visibleProducts = useMemo(() => {
     const slugs = tasteFilters[tasteIndex].slugs;
@@ -64,6 +76,46 @@ export default function CatalogClient({
     const set = new Set(slugs);
     return products.filter((p) => set.has(p.slug));
   }, [tasteIndex, products]);
+
+  const visibleMixes = useMemo(
+    () => (moodSlug ? mixes.filter((m) => m.moods.includes(moodSlug)) : mixes),
+    [moodSlug, mixes]
+  );
+
+  const visibleSmoothies = useMemo(
+    () =>
+      moodSlug
+        ? smoothies.filter((s) => s.moods.includes(moodSlug))
+        : smoothies,
+    [moodSlug, smoothies]
+  );
+
+  const moodChips = (
+    <div className="no-scrollbar mb-4 flex gap-2 overflow-x-auto px-4">
+      <button
+        onClick={() => setMoodSlug(null)}
+        className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
+          moodSlug === null ? "bg-brand text-white" : "bg-white text-brand"
+        }`}
+      >
+        Все
+      </button>
+      {moodOptions.map((mood) => {
+        const isActive = moodSlug === mood.slug;
+        return (
+          <button
+            key={mood.slug}
+            onClick={() => setMoodSlug(mood.slug)}
+            className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
+              isActive ? "bg-brand text-white" : "bg-white text-brand"
+            }`}
+          >
+            {mood.emoji} {mood.label}
+          </button>
+        );
+      })}
+    </div>
+  );
 
   return (
     <div className="py-4">
@@ -76,7 +128,7 @@ export default function CatalogClient({
           return (
             <button
               key={c.key}
-              onClick={() => setCategory(c.key)}
+              onClick={() => changeCategory(c.key)}
               className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
                 isActive ? "bg-brand text-white" : "bg-white text-brand"
               }`}
@@ -116,19 +168,25 @@ export default function CatalogClient({
       )}
 
       {category === "mixes" && (
-        <div className="grid grid-cols-2 gap-3 px-4">
-          {mixes.map((mix) => (
-            <MixCard key={mix.slug} mix={mix} />
-          ))}
-        </div>
+        <>
+          {moodChips}
+          <div className="grid grid-cols-2 gap-3 px-4">
+            {visibleMixes.map((mix) => (
+              <MixCard key={mix.slug} mix={mix} />
+            ))}
+          </div>
+        </>
       )}
 
       {category === "smoothies" && (
-        <div className="grid grid-cols-2 gap-3 px-4">
-          {smoothies.map((smoothie) => (
-            <SmoothieCard key={smoothie.slug} smoothie={smoothie} />
-          ))}
-        </div>
+        <>
+          {moodChips}
+          <div className="grid grid-cols-2 gap-3 px-4">
+            {visibleSmoothies.map((smoothie) => (
+              <SmoothieCard key={smoothie.slug} smoothie={smoothie} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

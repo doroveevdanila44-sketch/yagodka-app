@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { formatPrice, weightOptions, type Mix } from "@/lib/products";
 import { useCart } from "./CartProvider";
+import MoodTags from "./MoodTags";
 
 export default function MixDetail({ mix }: { mix: Mix }) {
   const [weightIndex, setWeightIndex] = useState(0);
@@ -73,6 +74,7 @@ export default function MixDetail({ mix }: { mix: Mix }) {
       <div className="mt-5">
         <p className="mb-1 text-sm font-semibold text-ink">Характер</p>
         <p className="text-sm italic text-gray-600">{mix.mood}</p>
+        <MoodTags moods={mix.moods} />
       </div>
 
       {/* Полное описание */}

@@ -136,6 +136,23 @@ export function formatPrice(value: number): string {
   return `${value.toLocaleString("ru-RU")} ₽`;
 }
 
+export type MoodSlug =
+  | "morning"
+  | "energy"
+  | "happy"
+  | "relax"
+  | "fresh"
+  | "evening";
+
+export const moodOptions: { slug: MoodSlug; emoji: string; label: string }[] = [
+  { slug: "morning", emoji: "🌅", label: "Начать день" },
+  { slug: "energy", emoji: "⚡", label: "Зарядиться" },
+  { slug: "happy", emoji: "😊", label: "Настроение" },
+  { slug: "relax", emoji: "🌿", label: "Отдохнуть" },
+  { slug: "fresh", emoji: "❄️", label: "Освежиться" },
+  { slug: "evening", emoji: "🌙", label: "Вечер" },
+];
+
 export type Mix = {
   slug: string;
   name: string;
@@ -143,6 +160,7 @@ export type Mix = {
   shortDesc: string;
   fullDesc: string;
   mood: string;
+  moods: MoodSlug[];
   /** Цена за 250 г, ₽ */
   price: number;
   imageJar: string;
@@ -159,6 +177,7 @@ export const mixes: Mix[] = [
       "Сочетание трёх дикорастущих ягод с мягким, насыщенным и благородным вкусом. Голубика дарит сладость, ирга добавляет медовые оттенки, а жимолость завершает микс лёгкой северной кислинкой. Идеальный выбор для тех, кто любит природный вкус без лишней сладости.",
     mood: "Спокойный, лесной, благородный",
     price: 890,
+    moods: ["relax", "evening"],
     imageJar: "/images/mixes/taezhniy-jar.jpg",
     imageLoose: "/images/mixes/taezhniy-loose.jpg",
   },
@@ -171,6 +190,7 @@ export const mixes: Mix[] = [
       "Яркий северный микс, вобравший в себя вкус Камчатки. Нежная морошка, ароматная облепиха и сочная голубика создают насыщенное сочетание сладости, свежести и лёгкой цитрусовой кислинки. Настоящее знакомство с дикой природой полуострова.",
     mood: "Северный, яркий, уникальный",
     price: 990,
+    moods: ["fresh", "morning"],
     imageJar: "/images/mixes/kamchatskiy-jar.jpg",
     imageLoose: "/images/mixes/kamchatskiy-loose.jpg",
   },
@@ -183,6 +203,7 @@ export const mixes: Mix[] = [
       "Классическое сочетание двух самых любимых ягод. Сладкая клубника и ароматная малина создают насыщенный вкус спелого лета, который нравится и детям, и взрослым. Самый мягкий и десертный микс коллекции.",
     mood: "Летний, солнечный, сладкий",
     price: 850,
+    moods: ["happy", "energy"],
     imageJar: "/images/mixes/yuzhniy-jar.jpg",
     imageLoose: "/images/mixes/yuzhniy-loose.jpg",
   },
@@ -195,6 +216,7 @@ export const mixes: Mix[] = [
       "Глубокий вкус тёмных ягод с выразительным ароматом и благородной кислинкой. Голубика делает микс мягче, ежевика добавляет сочности, а чёрная смородина наполняет его характерным насыщенным послевкусием.",
     mood: "Глубокий, насыщенный, вечерний",
     price: 920,
+    moods: ["evening", "relax"],
     imageJar: "/images/mixes/polyarnaya-noch-jar.jpg",
     imageLoose: "/images/mixes/polyarnaya-noch-loose.jpg",
   },
@@ -207,6 +229,7 @@ export const mixes: Mix[] = [
       "Гармоничное сочетание лесных ягод с мягкой сладостью и приятной кислинкой. Голубика придаёт сочность, ирга — лёгкие медовые ноты, а брусника освежает вкус. Универсальный микс для любителей натуральных ягод.",
     mood: "Натуральный, спокойный, лесной",
     price: 870,
+    moods: ["relax", "fresh"],
     imageJar: "/images/mixes/lesnoy-jar.jpg",
     imageLoose: "/images/mixes/lesnoy-loose.jpg",
   },
@@ -219,6 +242,7 @@ export const mixes: Mix[] = [
       "Самый энергичный ягодный микс коллекции. Сладкая клубника, ароматная малина и сочная красная смородина создают яркий, освежающий вкус с выразительной ягодной кислинкой. Каждая ложка напоминает о насыщенном летнем урожае.",
     mood: "Яркий, сочный, энергичный",
     price: 880,
+    moods: ["energy", "happy"],
     imageJar: "/images/mixes/vulkan-jar.jpg",
     imageLoose: "/images/mixes/vulkan-loose.jpg",
   },
@@ -231,6 +255,7 @@ export const mixes: Mix[] = [
       "Две легендарные северные ягоды в одном сочетании. Нежная морошка и ароматная облепиха образуют богатый янтарный вкус с природной свежестью и лёгкими цитрусовыми нотами. Один из самых узнаваемых северных миксов.",
     mood: "Тёплый, золотистый, северный",
     price: 950,
+    moods: [],
     imageJar: "/images/mixes/yantarniy-jar.jpg",
     imageLoose: "/images/mixes/yantarniy-loose.jpg",
   },
@@ -243,6 +268,7 @@ export const mixes: Mix[] = [
       "Освежающий микс из трёх северных ягод с яркой природной кислинкой. Клюква дарит насыщенность, брусника делает вкус благороднее, а красная смородина добавляет сочности. Отличный выбор для тех, кто любит выразительный ягодный вкус.",
     mood: "Свежий, бодрящий, северный",
     price: 860,
+    moods: ["morning", "fresh"],
     imageJar: "/images/mixes/severnyy-jar.jpg",
     imageLoose: "/images/mixes/severnyy-loose.jpg",
   },
@@ -259,6 +285,7 @@ export type Smoothie = {
   shortDesc: string;
   fullDesc: string;
   mood: string;
+  moods: MoodSlug[];
   /** Цена за 300 мл, ₽ */
   price: number;
   image: string;
@@ -274,6 +301,7 @@ export const smoothies: Smoothie[] = [
       "Максимально понятный и универсальный смузи. Сладкая клубника и нежная малина создают яркий, солнечный вкус, который нравится всем без исключения.",
     mood: "Летний, лёгкий, сладкий",
     price: 390,
+    moods: ["morning", "happy"],
     image: "/images/smoothies/rassvet.jpg",
   },
   {
@@ -285,6 +313,7 @@ export const smoothies: Smoothie[] = [
       "Богатый ягодный вкус с лёгкой освежающей кислинкой. Клубника и малина создают сладкую основу, которую красная смородина наполняет выразительной ягодной кислинкой.",
     mood: "Яркий, насыщенный, энергичный",
     price: 420,
+    moods: ["energy", "happy"],
     image: "/images/smoothies/magma.jpg",
   },
   {
@@ -296,6 +325,7 @@ export const smoothies: Smoothie[] = [
       "Самый плотный и выразительный смузи коллекции. Голубика смягчает вкус, ежевика добавляет сочности, а чёрная смородина наполняет его характерным северным послевкусием.",
     mood: "Глубокий, насыщенный, вечерний",
     price: 440,
+    moods: ["evening", "relax"],
     image: "/images/smoothies/polunochnyy.jpg",
   },
   {
@@ -307,6 +337,7 @@ export const smoothies: Smoothie[] = [
       "Благородный, спокойный ягодный профиль с природной сладостью. Голубика и ирга дарят мягкость, а жимолость завершает вкус лёгкой северной кислинкой.",
     mood: "Спокойный, лесной, благородный",
     price: 430,
+    moods: ["relax", "evening"],
     image: "/images/smoothies/taezhniy-smoothie.jpg",
   },
   {
@@ -318,6 +349,7 @@ export const smoothies: Smoothie[] = [
       "Освежающий вкус с приятной северной кислинкой. Голубика придаёт сочность, ирга — лёгкие медовые ноты, а брусника освежает и делает вкус чище.",
     mood: "Натуральный, свежий, лесной",
     price: 420,
+    moods: ["fresh", "relax"],
     image: "/images/smoothies/lesnaya-prohlada.jpg",
   },
   {
@@ -329,6 +361,7 @@ export const smoothies: Smoothie[] = [
       "Лёгкий, свежий и очень витаминный. Облепиха и морошка создают яркий золотистый вкус с природной свежестью и лёгкими цитрусовыми нотами.",
     mood: "Тёплый, золотистый, витаминный",
     price: 450,
+    moods: ["happy", "morning"],
     image: "/images/smoothies/solnechnyy-den.jpg",
   },
   {
@@ -340,6 +373,7 @@ export const smoothies: Smoothie[] = [
       "Сочная северная кислинка и насыщенный ягодный вкус, который отлично освежает. Клюква дарит насыщенность, брусника делает вкус благороднее, красная смородина добавляет сочности.",
     mood: "Свежий, бодрящий, северный",
     price: 410,
+    moods: ["morning", "fresh"],
     image: "/images/smoothies/severnoe-utro.jpg",
   },
 ];

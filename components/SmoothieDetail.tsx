@@ -8,6 +8,7 @@ import {
   type Smoothie,
 } from "@/lib/products";
 import { useCart } from "./CartProvider";
+import MoodTags from "./MoodTags";
 
 export default function SmoothieDetail({ smoothie }: { smoothie: Smoothie }) {
   const [volumeIndex, setVolumeIndex] = useState(0);
@@ -66,6 +67,7 @@ export default function SmoothieDetail({ smoothie }: { smoothie: Smoothie }) {
       <div className="mt-5">
         <p className="mb-1 text-sm font-semibold text-ink">Характер</p>
         <p className="text-sm italic text-gray-600">{smoothie.mood}</p>
+        <MoodTags moods={smoothie.moods} />
       </div>
 
       {/* Полное описание */}
