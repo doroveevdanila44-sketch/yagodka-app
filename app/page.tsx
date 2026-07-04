@@ -124,7 +124,7 @@ export default function HomePage() {
           </div>
           <div className="relative h-[280px] w-[140px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
-              src="/images/smoothies-collage.jpg"
+              src="/images/smoothies-banner.png"
               alt="Смузи"
               fill
               sizes="140px"
