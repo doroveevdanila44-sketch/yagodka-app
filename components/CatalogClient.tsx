@@ -4,13 +4,7 @@ import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import MixCard from "./MixCard";
 import SmoothieCard from "./SmoothieCard";
-import {
-  moodOptions,
-  type Mix,
-  type MoodSlug,
-  type Product,
-  type Smoothie,
-} from "@/lib/products";
+import type { Mix, Product, Smoothie } from "@/lib/products";
 
 type TasteFilter = {
   label: string;
@@ -44,6 +38,19 @@ const tasteFilters: TasteFilter[] = [
   },
 ];
 
+type ProductTasteFilter = {
+  label: string;
+  taste: string | null; // null = все
+};
+
+const productTasteFilters: ProductTasteFilter[] = [
+  { label: "Все", taste: null },
+  { label: "Сладкие", taste: "sweet" },
+  { label: "Кисло-сладкие", taste: "sour-sweet" },
+  { label: "Кислые", taste: "sour" },
+  { label: "Терпкие", taste: "rich" },
+];
+
 type Category = "berries" | "mixes" | "smoothies";
 
 const categories: { key: Category; label: string }[] = [
@@ -63,11 +70,11 @@ export default function CatalogClient({
 }) {
   const [category, setCategory] = useState<Category>("berries");
   const [tasteIndex, setTasteIndex] = useState(0);
-  const [moodSlug, setMoodSlug] = useState<MoodSlug | null>(null);
+  const [productTasteIndex, setProductTasteIndex] = useState(0);
 
   const changeCategory = (next: Category) => {
     setCategory(next);
-    setMoodSlug(null); // сбрасываем настроение при смене вкладки
+    setProductTasteIndex(0); // сбрасываем вкус на "Все" при смене вкладки
   };
 
   const visibleProducts = useMemo(() => {
@@ -77,40 +84,37 @@ export default function CatalogClient({
     return products.filter((p) => set.has(p.slug));
   }, [tasteIndex, products]);
 
+  const selectedTaste = productTasteFilters[productTasteIndex].taste;
+
   const visibleMixes = useMemo(
-    () => (moodSlug ? mixes.filter((m) => m.moods.includes(moodSlug)) : mixes),
-    [moodSlug, mixes]
+    () =>
+      selectedTaste
+        ? mixes.filter((m) => m.tastes.includes(selectedTaste))
+        : mixes,
+    [selectedTaste, mixes]
   );
 
   const visibleSmoothies = useMemo(
     () =>
-      moodSlug
-        ? smoothies.filter((s) => s.moods.includes(moodSlug))
+      selectedTaste
+        ? smoothies.filter((s) => s.tastes.includes(selectedTaste))
         : smoothies,
-    [moodSlug, smoothies]
+    [selectedTaste, smoothies]
   );
 
-  const moodChips = (
+  const productTasteChips = (
     <div className="no-scrollbar mb-4 flex gap-2 overflow-x-auto px-4">
-      <button
-        onClick={() => setMoodSlug(null)}
-        className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
-          moodSlug === null ? "bg-brand text-white" : "bg-white text-brand"
-        }`}
-      >
-        Все
-      </button>
-      {moodOptions.map((mood) => {
-        const isActive = moodSlug === mood.slug;
+      {productTasteFilters.map((filter, index) => {
+        const isActive = index === productTasteIndex;
         return (
           <button
-            key={mood.slug}
-            onClick={() => setMoodSlug(mood.slug)}
+            key={filter.label}
+            onClick={() => setProductTasteIndex(index)}
             className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
               isActive ? "bg-brand text-white" : "bg-white text-brand"
             }`}
           >
-            {mood.label}
+            {filter.label}
           </button>
         );
       })}
@@ -169,7 +173,7 @@ export default function CatalogClient({
 
       {category === "mixes" && (
         <>
-          {moodChips}
+          {productTasteChips}
           <div className="grid grid-cols-2 gap-3 px-4">
             {visibleMixes.map((mix) => (
               <MixCard key={mix.slug} mix={mix} />
@@ -180,7 +184,7 @@ export default function CatalogClient({
 
       {category === "smoothies" && (
         <>
-          {moodChips}
+          {productTasteChips}
           <div className="grid grid-cols-2 gap-3 px-4">
             {visibleSmoothies.map((smoothie) => (
               <SmoothieCard key={smoothie.slug} smoothie={smoothie} />
