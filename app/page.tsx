@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products, formatPrice } from "@/lib/products";
+import { products, mixes, formatPrice } from "@/lib/products";
 
 export default function HomePage() {
   return (
@@ -61,6 +61,44 @@ export default function HomePage() {
                 <p className="mt-0.5 text-xs text-gray-500">за 250 г</p>
                 <p className="mt-1 text-sm font-bold text-brand">
                   {formatPrice(product.price)}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Наши миксы — горизонтальный скролл */}
+      <section className="mt-6">
+        <div className="mb-3 flex items-center justify-between px-4">
+          <h2 className="text-lg font-bold text-ink">Наши миксы</h2>
+          <Link href="/mixes" className="text-sm font-semibold text-brand">
+            Все
+          </Link>
+        </div>
+        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-2">
+          {mixes.map((mix) => (
+            <Link
+              key={mix.slug}
+              href={`/mixes/${mix.slug}`}
+              className="w-44 flex-shrink-0 overflow-hidden rounded-2xl border border-light bg-white"
+            >
+              <div className="relative aspect-square bg-light">
+                <Image
+                  src={mix.imageJar}
+                  alt={mix.name}
+                  fill
+                  sizes="176px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-3">
+                <h3 className="text-sm font-bold text-ink">{mix.name}</h3>
+                <p className="mt-0.5 line-clamp-2 text-xs text-gray-500">
+                  {mix.shortDesc}
+                </p>
+                <p className="mt-1 text-sm font-bold text-brand">
+                  от {formatPrice(mix.price)}
                 </p>
               </div>
             </Link>

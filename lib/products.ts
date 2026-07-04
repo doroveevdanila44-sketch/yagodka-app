@@ -135,3 +135,119 @@ export const weightOptions = [
 export function formatPrice(value: number): string {
   return `${value.toLocaleString("ru-RU")} ₽`;
 }
+
+export type Mix = {
+  slug: string;
+  name: string;
+  composition: string[];
+  shortDesc: string;
+  fullDesc: string;
+  mood: string;
+  /** Цена за 250 г, ₽ */
+  price: number;
+  imageJar: string;
+  imageLoose: string;
+};
+
+export const mixes: Mix[] = [
+  {
+    slug: "taezhniy",
+    name: "Таёжный",
+    composition: ["Голубика", "Ирга", "Жимолость"],
+    shortDesc: "Настоящий вкус северной тайги.",
+    fullDesc:
+      "Сочетание трёх дикорастущих ягод с мягким, насыщенным и благородным вкусом. Голубика дарит сладость, ирга добавляет медовые оттенки, а жимолость завершает микс лёгкой северной кислинкой. Идеальный выбор для тех, кто любит природный вкус без лишней сладости.",
+    mood: "Спокойный, лесной, благородный",
+    price: 890,
+    imageJar: "/images/mixes/taezhniy-jar.jpg",
+    imageLoose: "/images/mixes/taezhniy-loose.jpg",
+  },
+  {
+    slug: "kamchatskiy",
+    name: "Камчатский",
+    composition: ["Голубика", "Морошка", "Облепиха"],
+    shortDesc: "Самые узнаваемые ягоды Камчатки.",
+    fullDesc:
+      "Яркий северный микс, вобравший в себя вкус Камчатки. Нежная морошка, ароматная облепиха и сочная голубика создают насыщенное сочетание сладости, свежести и лёгкой цитрусовой кислинки. Настоящее знакомство с дикой природой полуострова.",
+    mood: "Северный, яркий, уникальный",
+    price: 990,
+    imageJar: "/images/mixes/kamchatskiy-jar.jpg",
+    imageLoose: "/images/mixes/kamchatskiy-loose.jpg",
+  },
+  {
+    slug: "yuzhniy",
+    name: "Южный",
+    composition: ["Клубника", "Малина"],
+    shortDesc: "Максимально сладкий летний микс.",
+    fullDesc:
+      "Классическое сочетание двух самых любимых ягод. Сладкая клубника и ароматная малина создают насыщенный вкус спелого лета, который нравится и детям, и взрослым. Самый мягкий и десертный микс коллекции.",
+    mood: "Летний, солнечный, сладкий",
+    price: 850,
+    imageJar: "/images/mixes/yuzhniy-jar.jpg",
+    imageLoose: "/images/mixes/yuzhniy-loose.jpg",
+  },
+  {
+    slug: "polyarnaya-noch",
+    name: "Полярная ночь",
+    composition: ["Голубика", "Чёрная смородина", "Ежевика"],
+    shortDesc: "Тёмный, насыщенный ягодный вкус.",
+    fullDesc:
+      "Глубокий вкус тёмных ягод с выразительным ароматом и благородной кислинкой. Голубика делает микс мягче, ежевика добавляет сочности, а чёрная смородина наполняет его характерным насыщенным послевкусием.",
+    mood: "Глубокий, насыщенный, вечерний",
+    price: 920,
+    imageJar: "/images/mixes/polyarnaya-noch-jar.jpg",
+    imageLoose: "/images/mixes/polyarnaya-noch-loose.jpg",
+  },
+  {
+    slug: "lesnoy",
+    name: "Лесной",
+    composition: ["Голубика", "Брусника", "Ирга"],
+    shortDesc: "Классический лесной сбор.",
+    fullDesc:
+      "Гармоничное сочетание лесных ягод с мягкой сладостью и приятной кислинкой. Голубика придаёт сочность, ирга — лёгкие медовые ноты, а брусника освежает вкус. Универсальный микс для любителей натуральных ягод.",
+    mood: "Натуральный, спокойный, лесной",
+    price: 870,
+    imageJar: "/images/mixes/lesnoy-jar.jpg",
+    imageLoose: "/images/mixes/lesnoy-loose.jpg",
+  },
+  {
+    slug: "vulkan",
+    name: "Вулкан",
+    composition: ["Клубника", "Малина", "Красная смородина"],
+    shortDesc: "Яркий, сочный микс с лёгкой кислинкой.",
+    fullDesc:
+      "Самый энергичный ягодный микс коллекции. Сладкая клубника, ароматная малина и сочная красная смородина создают яркий, освежающий вкус с выразительной ягодной кислинкой. Каждая ложка напоминает о насыщенном летнем урожае.",
+    mood: "Яркий, сочный, энергичный",
+    price: 880,
+    imageJar: "/images/mixes/vulkan-jar.jpg",
+    imageLoose: "/images/mixes/vulkan-loose.jpg",
+  },
+  {
+    slug: "yantarniy",
+    name: "Янтарный",
+    composition: ["Облепиха", "Морошка"],
+    shortDesc: "Золотистый северный микс.",
+    fullDesc:
+      "Две легендарные северные ягоды в одном сочетании. Нежная морошка и ароматная облепиха образуют богатый янтарный вкус с природной свежестью и лёгкими цитрусовыми нотами. Один из самых узнаваемых северных миксов.",
+    mood: "Тёплый, золотистый, северный",
+    price: 950,
+    imageJar: "/images/mixes/yantarniy-jar.jpg",
+    imageLoose: "/images/mixes/yantarniy-loose.jpg",
+  },
+  {
+    slug: "severnyy",
+    name: "Северный",
+    composition: ["Клюква", "Брусника", "Красная смородина"],
+    shortDesc: "Самый бодрящий и кисловатый микс.",
+    fullDesc:
+      "Освежающий микс из трёх северных ягод с яркой природной кислинкой. Клюква дарит насыщенность, брусника делает вкус благороднее, а красная смородина добавляет сочности. Отличный выбор для тех, кто любит выразительный ягодный вкус.",
+    mood: "Свежий, бодрящий, северный",
+    price: 860,
+    imageJar: "/images/mixes/severnyy-jar.jpg",
+    imageLoose: "/images/mixes/severnyy-loose.jpg",
+  },
+];
+
+export function getMix(slug: string): Mix | undefined {
+  return mixes.find((m) => m.slug === slug);
+}
