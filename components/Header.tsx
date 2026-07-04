@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { BellIcon } from "./icons";
 
@@ -15,14 +14,7 @@ export default function Header() {
     >
       <div className="w-9" />
       <Link href="/" className="flex items-center">
-        <Image
-          src="/images/logo.png"
-          alt="Ягодка"
-          width={40}
-          height={40}
-          className="h-10 w-10 rounded-xl"
-          priority
-        />
+        <span className="text-lg font-bold text-brand">Ягодка</span>
       </Link>
       <button
         type="button"
