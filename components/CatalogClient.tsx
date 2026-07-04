@@ -63,12 +63,18 @@ export default function CatalogClient({
   products,
   mixes,
   smoothies,
+  initialTab,
 }: {
   products: Product[];
   mixes: Mix[];
   smoothies: Smoothie[];
+  initialTab?: string;
 }) {
-  const [category, setCategory] = useState<Category>("berries");
+  const initialCategory: Category =
+    initialTab === "mixes" || initialTab === "smoothies"
+      ? initialTab
+      : "berries";
+  const [category, setCategory] = useState<Category>(initialCategory);
   const [tasteIndex, setTasteIndex] = useState(0);
   const [productTasteIndex, setProductTasteIndex] = useState(0);
 
