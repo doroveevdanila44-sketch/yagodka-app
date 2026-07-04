@@ -8,9 +8,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: "#D92D5A",
-        accent: "#FF4D7D",
-        light: "#FFE6EE",
+        brand: "#F39A34",
+        accent: "#F39A34",
+        light: "#FFF3E0",
         ink: "#1A1A1A",
       },
       maxWidth: {
