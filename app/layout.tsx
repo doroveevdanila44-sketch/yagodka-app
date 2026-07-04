@@ -14,7 +14,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: "cover",
-  themeColor: "#F39A34",
+  themeColor: "#FF8C00",
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
           content="black-translucent"
         />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#F39A34" />
+        <meta name="theme-color" content="#FF8C00" />
       </head>
       <body>
         <CartProvider>

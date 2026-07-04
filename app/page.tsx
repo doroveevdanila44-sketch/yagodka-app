@@ -106,7 +106,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 3 — Смузи (текст слева, фото справа) */}
-      <section className="bg-[#FFF3E0] px-4 py-12">
+      <section className="bg-[#FFF5E6] px-4 py-12">
         <div className="flex items-center gap-4">
           <div className="flex-1">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand">
@@ -201,7 +201,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 6 — Преимущества */}
-      <section className="bg-[#FFF3E0] px-4 py-12">
+      <section className="bg-[#FFF5E6] px-4 py-12">
         <h2 className="mb-6 text-center text-2xl font-bold text-ink">
           Почему Ягодка
         </h2>
