@@ -30,7 +30,7 @@ export default function MixesPage() {
                   alt={mix.name}
                   fill
                   sizes="358px"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </Link>

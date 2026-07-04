@@ -36,7 +36,7 @@ export default function MixDetail({ mix }: { mix: Mix }) {
             fill
             priority
             sizes="358px"
-            className="object-cover"
+            className="object-contain"
           />
         </div>
         <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-white">
@@ -45,7 +45,7 @@ export default function MixDetail({ mix }: { mix: Mix }) {
             alt={`${mix.name} — ягоды`}
             fill
             sizes="358px"
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       </div>

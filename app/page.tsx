@@ -89,7 +89,7 @@ export default function HomePage() {
                   alt={mix.name}
                   fill
                   sizes="176px"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <div className="p-3">

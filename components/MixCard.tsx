@@ -14,7 +14,7 @@ export default function MixCard({ mix }: { mix: Mix }) {
           alt={mix.name}
           fill
           sizes="180px"
-          className="object-cover"
+          className="object-contain"
         />
       </div>
       <div className="flex flex-1 flex-col p-3">
