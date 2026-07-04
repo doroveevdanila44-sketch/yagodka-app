@@ -32,7 +32,7 @@ export default function ProductDetail({ product }: { product: Product }) {
   return (
     <div className="pb-4">
       {/* Большое фото */}
-      <div className="relative aspect-square w-full bg-light">
+      <div className="relative aspect-square w-full bg-white">
         <Image
           src={product.image}
           alt={product.name}

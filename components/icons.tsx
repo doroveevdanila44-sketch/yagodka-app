@@ -108,6 +108,26 @@ export function BellIcon({ className }: IconProps) {
   );
 }
 
+export function SmoothieIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M7 3h10l-1 4H8L7 3Z" />
+      <path d="M8 7l1 12.2A1.8 1.8 0 0 0 10.8 21h2.4a1.8 1.8 0 0 0 1.8-1.8L16 7" />
+      <path d="M9 12h6" />
+      <path d="M11 3v-.5" />
+      <path d="M13 3v-.5" />
+    </svg>
+  );
+}
+
 export function PinIcon({ className }: IconProps) {
   return (
     <svg

@@ -2,14 +2,16 @@
 
 import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
-import type { Product } from "@/lib/products";
+import MixCard from "./MixCard";
+import { SmoothieIcon } from "./icons";
+import type { Mix, Product } from "@/lib/products";
 
-type Filter = {
+type TasteFilter = {
   label: string;
   slugs: string[] | null; // null = все ягоды
 };
 
-const filters: Filter[] = [
+const tasteFilters: TasteFilter[] = [
   { label: "Все", slugs: null },
   {
     label: "Сладкие",
@@ -36,44 +38,100 @@ const filters: Filter[] = [
   },
 ];
 
-export default function CatalogClient({ products }: { products: Product[] }) {
-  const [active, setActive] = useState(0);
+type Category = "berries" | "mixes" | "smoothies";
 
-  const visible = useMemo(() => {
-    const slugs = filters[active].slugs;
+const categories: { key: Category; label: string }[] = [
+  { key: "berries", label: "Ягоды" },
+  { key: "mixes", label: "Миксы" },
+  { key: "smoothies", label: "Смузи" },
+];
+
+export default function CatalogClient({
+  products,
+  mixes,
+}: {
+  products: Product[];
+  mixes: Mix[];
+}) {
+  const [category, setCategory] = useState<Category>("berries");
+  const [tasteIndex, setTasteIndex] = useState(0);
+
+  const visibleProducts = useMemo(() => {
+    const slugs = tasteFilters[tasteIndex].slugs;
     if (!slugs) return products;
     const set = new Set(slugs);
     return products.filter((p) => set.has(p.slug));
-  }, [active, products]);
+  }, [tasteIndex, products]);
 
   return (
     <div className="py-4">
       <h1 className="mb-4 px-4 text-xl font-bold text-ink">Каталог</h1>
 
-      {/* Чипы-фильтры */}
+      {/* Категории */}
       <div className="no-scrollbar mb-4 flex gap-2 overflow-x-auto px-4">
-        {filters.map((filter, index) => {
-          const isActive = index === active;
+        {categories.map((c) => {
+          const isActive = c.key === category;
           return (
             <button
-              key={filter.label}
-              onClick={() => setActive(index)}
+              key={c.key}
+              onClick={() => setCategory(c.key)}
               className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
                 isActive ? "bg-brand text-white" : "bg-white text-brand"
               }`}
             >
-              {filter.label}
+              {c.label}
             </button>
           );
         })}
       </div>
 
-      {/* Сетка товаров */}
-      <div className="grid grid-cols-2 gap-3 px-4">
-        {visible.map((product) => (
-          <ProductCard key={product.slug} product={product} />
-        ))}
-      </div>
+      {category === "berries" && (
+        <>
+          {/* Чипы-фильтры по вкусу */}
+          <div className="no-scrollbar mb-4 flex gap-2 overflow-x-auto px-4">
+            {tasteFilters.map((filter, index) => {
+              const isActive = index === tasteIndex;
+              return (
+                <button
+                  key={filter.label}
+                  onClick={() => setTasteIndex(index)}
+                  className={`whitespace-nowrap rounded-full border border-brand px-4 py-1.5 text-sm font-semibold transition-colors ${
+                    isActive ? "bg-brand text-white" : "bg-white text-brand"
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 px-4">
+            {visibleProducts.map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {category === "mixes" && (
+        <div className="grid grid-cols-2 gap-3 px-4">
+          {mixes.map((mix) => (
+            <MixCard key={mix.slug} mix={mix} />
+          ))}
+        </div>
+      )}
+
+      {category === "smoothies" && (
+        <div className="flex flex-col items-center justify-center px-4 py-20 text-center">
+          <SmoothieIcon className="h-14 w-14 text-brand" />
+          <p className="mt-4 text-base font-bold text-ink">
+            Скоро появятся смузи
+          </p>
+          <p className="mt-1 text-sm text-gray-500">
+            Следите за обновлениями
+          </p>
+        </div>
+      )}
     </div>
   );
 }

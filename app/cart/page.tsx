@@ -47,7 +47,7 @@ export default function CartPage() {
             key={`${item.slug}-${item.grams}`}
             className="flex items-center gap-3 rounded-2xl border border-light bg-white p-3"
           >
-            <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-light">
+            <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-white">
               <Image
                 src={item.image}
                 alt={item.name}

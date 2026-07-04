@@ -47,7 +47,7 @@ export default function HomePage() {
               href={`/product/${product.slug}`}
               className="w-36 flex-shrink-0 overflow-hidden rounded-2xl border border-light bg-white"
             >
-              <div className="relative aspect-square bg-light">
+              <div className="relative aspect-square bg-white">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -83,7 +83,7 @@ export default function HomePage() {
               href={`/mixes/${mix.slug}`}
               className="w-44 flex-shrink-0 overflow-hidden rounded-2xl border border-light bg-white"
             >
-              <div className="relative aspect-square bg-light">
+              <div className="relative aspect-square bg-white">
                 <Image
                   src={mix.imageJar}
                   alt={mix.name}

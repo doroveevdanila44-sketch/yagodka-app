@@ -24,7 +24,7 @@ export default function MixesPage() {
         {mixes.map((mix) => (
           <div key={mix.slug} className="flex flex-col">
             <Link href={`/mixes/${mix.slug}`} className="block">
-              <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-light">
+              <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-white">
                 <Image
                   src={mix.imageJar}
                   alt={mix.name}

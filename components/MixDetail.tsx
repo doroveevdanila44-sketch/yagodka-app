@@ -29,7 +29,7 @@ export default function MixDetail({ mix }: { mix: Mix }) {
     <div className="px-4 pb-4">
       {/* Галерея */}
       <div className="flex flex-col gap-3">
-        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-light">
+        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-white">
           <Image
             src={mix.imageJar}
             alt={`${mix.name} — в банке`}
@@ -39,7 +39,7 @@ export default function MixDetail({ mix }: { mix: Mix }) {
             className="object-cover"
           />
         </div>
-        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-light">
+        <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-white">
           <Image
             src={mix.imageLoose}
             alt={`${mix.name} — ягоды`}

@@ -7,14 +7,12 @@ import {
   CartIcon,
   CatalogIcon,
   HomeIcon,
-  MixIcon,
   ProfileIcon,
 } from "./icons";
 
 const tabs = [
   { href: "/", label: "Главная", Icon: HomeIcon },
   { href: "/catalog", label: "Каталог", Icon: CatalogIcon },
-  { href: "/mixes", label: "Миксы", Icon: MixIcon },
   { href: "/cart", label: "Корзина", Icon: CartIcon },
   { href: "/profile", label: "Профиль", Icon: ProfileIcon },
 ];
