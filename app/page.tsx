@@ -1,29 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Hand, Zap, Leaf, Star } from "lucide-react";
-
-const benefits = [
-  {
-    Icon: Hand,
-    title: "Собрано вручную",
-    text: "Каждая ягода отобрана вручную",
-  },
-  {
-    Icon: Zap,
-    title: "Быстрая доставка",
-    text: "Свежими к вашей двери",
-  },
-  {
-    Icon: Leaf,
-    title: "Натуральные ягоды",
-    text: "Без добавок и консервантов",
-  },
-  {
-    Icon: Star,
-    title: "Своё производство",
-    text: "Контроль качества на каждом этапе",
-  },
-];
 
 export default function HomePage() {
   return (
@@ -151,75 +127,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 5 — Отзывы */}
-      <section className="bg-white px-4 py-12">
-        <h2 className="mb-6 text-center text-2xl font-bold text-ink">Отзывы</h2>
-        <div className="no-scrollbar flex gap-3 overflow-x-auto pb-2">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="w-64 shrink-0 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-gray-200" />
-                <div className="h-3 w-24 rounded bg-gray-200" />
-              </div>
-              <div className="mt-3 flex gap-0.5 text-brand opacity-30">
-                {"★★★★★".split("").map((s, j) => (
-                  <span key={j}>{s}</span>
-                ))}
-              </div>
-              <div className="mt-3 space-y-1.5">
-                <div className="h-2 w-full rounded bg-gray-100" />
-                <div className="h-2 w-full rounded bg-gray-100" />
-                <div className="h-2 w-full rounded bg-gray-100" />
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-4 text-center text-xs text-gray-400">
-          Скоро здесь появятся первые отзывы
-        </p>
-      </section>
-
-      {/* SECTION 6 — Преимущества */}
-      <section className="bg-[#FFF5E6] px-4 py-12">
-        <h2 className="mb-6 text-center text-2xl font-bold text-ink">
-          Почему Ягодка
-        </h2>
-        <div className="grid grid-cols-2 gap-3">
-          {benefits.map(({ Icon, title, text }) => (
-            <div
-              key={title}
-              className="flex flex-col items-center rounded-2xl bg-white p-4 text-center"
-            >
-              <Icon size={28} className="text-brand" />
-              <p className="mt-2 text-sm font-semibold text-ink">{title}</p>
-              <p className="mt-1 text-xs text-gray-500">{text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION 7 — CTA */}
-      <section className="relative flex min-h-[280px] flex-col items-center justify-center gap-4 overflow-hidden px-4 py-12">
+      {/* SECTION 5 — Ягодная волна + CTA */}
+      <section className="bg-white">
         <Image
-          src="/images/banner.png"
-          alt=""
-          fill
-          sizes="390px"
-          className="object-cover"
+          src="/images/berry-wave-banner.jpg"
+          alt="Ягодная волна"
+          width={1536}
+          height={1024}
+          sizes="100vw"
+          className="block h-auto w-full"
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <h2 className="relative z-10 text-center text-2xl font-bold text-white">
-          Попробуйте вкус настоящего севера
-        </h2>
-        <Link
-          href="/catalog"
-          className="relative z-10 rounded-full bg-white px-8 py-3 font-semibold text-brand active:bg-light"
-        >
-          Перейти в каталог
-        </Link>
+        <div className="flex justify-center px-4">
+          <Link
+            href="/catalog"
+            className="mb-2 mt-6 rounded-full bg-brand px-8 py-4 text-lg font-semibold text-white active:bg-accent"
+          >
+            Собрать ягоду
+          </Link>
+        </div>
       </section>
     </div>
   );
