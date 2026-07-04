@@ -73,6 +73,23 @@ export function ProfileIcon({ className }: IconProps) {
   );
 }
 
+export function BellIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M18 8a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6" />
+      <path d="M10.5 19a1.8 1.8 0 0 0 3 0" />
+    </svg>
+  );
+}
+
 export function PinIcon({ className }: IconProps) {
   return (
     <svg

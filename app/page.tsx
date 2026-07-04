@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { products, formatPrice } from "@/lib/products";
-import { PinIcon } from "@/components/icons";
 
 export default function HomePage() {
   return (
-    <div className="pb-16">
+    <div className="pb-4">
       {/* Баннер */}
       <section className="relative">
         <div className="relative h-56 w-full">
@@ -68,14 +67,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* Кнопка поиска магазина — фиксированная внизу */}
-      <div className="fixed inset-x-0 bottom-[72px] z-20 mx-auto max-w-app px-4">
-        <button className="flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3.5 text-sm font-semibold text-white shadow-lg active:bg-accent">
-          <PinIcon className="h-5 w-5" />
-          Найти ближайший магазин
-        </button>
-      </div>
     </div>
   );
 }
