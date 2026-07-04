@@ -255,7 +255,7 @@ export const mixes: Mix[] = [
       "Две легендарные северные ягоды в одном сочетании. Нежная морошка и ароматная облепиха образуют богатый янтарный вкус с природной свежестью и лёгкими цитрусовыми нотами. Один из самых узнаваемых северных миксов.",
     mood: "Тёплый, золотистый, северный",
     price: 950,
-    moods: [],
+    moods: ["happy", "morning"],
     imageJar: "/images/mixes/yantarniy-jar.jpg",
     imageLoose: "/images/mixes/yantarniy-loose.jpg",
   },
