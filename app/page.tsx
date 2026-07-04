@@ -137,10 +137,10 @@ export default function HomePage() {
           sizes="100vw"
           className="block h-auto w-full"
         />
-        <div className="flex justify-center px-4">
+        <div className="flex justify-center px-4 pb-16">
           <Link
             href="/catalog"
-            className="mb-2 mt-6 rounded-full bg-brand px-8 py-4 text-lg font-semibold text-white active:bg-accent"
+            className="mt-6 rounded-full bg-brand px-10 py-2.5 text-base font-semibold text-white active:bg-accent"
           >
             Собрать ягоду
           </Link>
