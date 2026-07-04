@@ -251,3 +251,104 @@ export const mixes: Mix[] = [
 export function getMix(slug: string): Mix | undefined {
   return mixes.find((m) => m.slug === slug);
 }
+
+export type Smoothie = {
+  slug: string;
+  name: string;
+  composition: string[];
+  shortDesc: string;
+  fullDesc: string;
+  mood: string;
+  /** Цена за 300 мл, ₽ */
+  price: number;
+  image: string;
+};
+
+export const smoothies: Smoothie[] = [
+  {
+    slug: "rassvet",
+    name: "Рассвет",
+    composition: ["Клубника", "Малина"],
+    shortDesc: "Лёгкий сладкий смузи с ярким летним вкусом.",
+    fullDesc:
+      "Максимально понятный и универсальный смузи. Сладкая клубника и нежная малина создают яркий, солнечный вкус, который нравится всем без исключения.",
+    mood: "Летний, лёгкий, сладкий",
+    price: 390,
+    image: "/images/smoothies/rassvet.jpg",
+  },
+  {
+    slug: "magma",
+    name: "Магма",
+    composition: ["Клубника", "Малина", "Красная смородина"],
+    shortDesc: "Самый яркий смузи линейки.",
+    fullDesc:
+      "Богатый ягодный вкус с лёгкой освежающей кислинкой. Клубника и малина создают сладкую основу, которую красная смородина наполняет выразительной ягодной кислинкой.",
+    mood: "Яркий, насыщенный, энергичный",
+    price: 420,
+    image: "/images/smoothies/magma.jpg",
+  },
+  {
+    slug: "polunochnyy",
+    name: "Полуночный",
+    composition: ["Голубика", "Чёрная смородина", "Ежевика"],
+    shortDesc: "Глубокий насыщенный вкус северных ягод.",
+    fullDesc:
+      "Самый плотный и выразительный смузи коллекции. Голубика смягчает вкус, ежевика добавляет сочности, а чёрная смородина наполняет его характерным северным послевкусием.",
+    mood: "Глубокий, насыщенный, вечерний",
+    price: 440,
+    image: "/images/smoothies/polunochnyy.jpg",
+  },
+  {
+    slug: "taezhniy-smoothie",
+    name: "Таёжный",
+    composition: ["Голубика", "Ирга", "Жимолость"],
+    shortDesc: "Настоящий вкус северной тайги.",
+    fullDesc:
+      "Благородный, спокойный ягодный профиль с природной сладостью. Голубика и ирга дарят мягкость, а жимолость завершает вкус лёгкой северной кислинкой.",
+    mood: "Спокойный, лесной, благородный",
+    price: 430,
+    image: "/images/smoothies/taezhniy-smoothie.jpg",
+  },
+  {
+    slug: "lesnaya-prohlada",
+    name: "Лесная прохлада",
+    composition: ["Голубика", "Брусника", "Ирга"],
+    shortDesc: "Классическое сочетание лесных ягод.",
+    fullDesc:
+      "Освежающий вкус с приятной северной кислинкой. Голубика придаёт сочность, ирга — лёгкие медовые ноты, а брусника освежает и делает вкус чище.",
+    mood: "Натуральный, свежий, лесной",
+    price: 420,
+    image: "/images/smoothies/lesnaya-prohlada.jpg",
+  },
+  {
+    slug: "solnechnyy-den",
+    name: "Солнечный день",
+    composition: ["Облепиха", "Морошка"],
+    shortDesc: "Максимально солнечный смузи.",
+    fullDesc:
+      "Лёгкий, свежий и очень витаминный. Облепиха и морошка создают яркий золотистый вкус с природной свежестью и лёгкими цитрусовыми нотами.",
+    mood: "Тёплый, золотистый, витаминный",
+    price: 450,
+    image: "/images/smoothies/solnechnyy-den.jpg",
+  },
+  {
+    slug: "severnoe-utro",
+    name: "Северное утро",
+    composition: ["Клюква", "Брусника", "Красная смородина"],
+    shortDesc: "Самый бодрящий смузи линейки.",
+    fullDesc:
+      "Сочная северная кислинка и насыщенный ягодный вкус, который отлично освежает. Клюква дарит насыщенность, брусника делает вкус благороднее, красная смородина добавляет сочности.",
+    mood: "Свежий, бодрящий, северный",
+    price: 410,
+    image: "/images/smoothies/severnoe-utro.jpg",
+  },
+];
+
+export function getSmoothie(slug: string): Smoothie | undefined {
+  return smoothies.find((s) => s.slug === slug);
+}
+
+export const volumeOptions = [
+  { label: "300 мл", ml: 300, multiplier: 1 },
+  { label: "500 мл", ml: 500, multiplier: 1.6 },
+] as const;

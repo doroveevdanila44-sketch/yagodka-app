@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products, mixes, formatPrice } from "@/lib/products";
+import { products, mixes, smoothies, formatPrice } from "@/lib/products";
 
 export default function HomePage() {
   return (
@@ -99,6 +99,44 @@ export default function HomePage() {
                 </p>
                 <p className="mt-1 text-sm font-bold text-brand">
                   от {formatPrice(mix.price)}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Наши смузи — горизонтальный скролл */}
+      <section className="mt-6">
+        <div className="mb-3 flex items-center justify-between px-4">
+          <h2 className="text-lg font-bold text-ink">Наши смузи</h2>
+          <Link href="/catalog" className="text-sm font-semibold text-brand">
+            Все
+          </Link>
+        </div>
+        <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-2">
+          {smoothies.map((smoothie) => (
+            <Link
+              key={smoothie.slug}
+              href={`/smoothies/${smoothie.slug}`}
+              className="w-44 flex-shrink-0 overflow-hidden rounded-2xl border border-light bg-white"
+            >
+              <div className="relative aspect-square bg-white">
+                <Image
+                  src={smoothie.image}
+                  alt={smoothie.name}
+                  fill
+                  sizes="176px"
+                  className="object-contain"
+                />
+              </div>
+              <div className="p-3">
+                <h3 className="text-sm font-bold text-ink">{smoothie.name}</h3>
+                <p className="mt-0.5 line-clamp-2 text-xs text-gray-500">
+                  {smoothie.shortDesc}
+                </p>
+                <p className="mt-1 text-sm font-bold text-brand">
+                  от {formatPrice(smoothie.price)}
                 </p>
               </div>
             </Link>

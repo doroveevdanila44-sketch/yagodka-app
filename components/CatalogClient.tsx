@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import MixCard from "./MixCard";
-import { SmoothieIcon } from "./icons";
-import type { Mix, Product } from "@/lib/products";
+import SmoothieCard from "./SmoothieCard";
+import type { Mix, Product, Smoothie } from "@/lib/products";
 
 type TasteFilter = {
   label: string;
@@ -49,9 +49,11 @@ const categories: { key: Category; label: string }[] = [
 export default function CatalogClient({
   products,
   mixes,
+  smoothies,
 }: {
   products: Product[];
   mixes: Mix[];
+  smoothies: Smoothie[];
 }) {
   const [category, setCategory] = useState<Category>("berries");
   const [tasteIndex, setTasteIndex] = useState(0);
@@ -122,14 +124,10 @@ export default function CatalogClient({
       )}
 
       {category === "smoothies" && (
-        <div className="flex flex-col items-center justify-center px-4 py-20 text-center">
-          <SmoothieIcon className="h-14 w-14 text-brand" />
-          <p className="mt-4 text-base font-bold text-ink">
-            Скоро появятся смузи
-          </p>
-          <p className="mt-1 text-sm text-gray-500">
-            Следите за обновлениями
-          </p>
+        <div className="grid grid-cols-2 gap-3 px-4">
+          {smoothies.map((smoothie) => (
+            <SmoothieCard key={smoothie.slug} smoothie={smoothie} />
+          ))}
         </div>
       )}
     </div>
