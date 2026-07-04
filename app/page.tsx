@@ -50,33 +50,18 @@ export default function HomePage() {
             />
           </div>
         </div>
-
-        <div className="flex flex-col gap-3">
-          <Link
-            href="/catalog"
-            className="rounded-full bg-brand py-3 text-center text-sm font-semibold text-white active:bg-accent"
-          >
-            Смотреть каталог
-          </Link>
-          <Link
-            href="/catalog?tab=mixes"
-            className="rounded-full border border-brand py-3 text-center text-sm font-semibold text-brand active:bg-light"
-          >
-            Выбрать микс
-          </Link>
-        </div>
       </section>
 
       {/* SECTION 2 — Ягоды (фото слева, текст справа) */}
       <section className="bg-white px-4 py-12">
         <div className="flex items-center gap-4">
-          <div className="relative h-[280px] w-[140px] shrink-0 overflow-hidden rounded-2xl bg-white">
+          <div className="h-[400px] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
-              src="/images/berries-collage.jpg"
+              src="/images/berries-banner.jpg"
               alt="Северные ягоды"
-              fill
-              sizes="140px"
-              className="object-contain"
+              width={120}
+              height={400}
+              className="h-full w-full object-contain"
             />
           </div>
           <div className="flex-1">
@@ -137,13 +122,13 @@ export default function HomePage() {
       {/* SECTION 4 — Миксы (фото слева, текст справа) */}
       <section className="bg-white px-4 py-12">
         <div className="flex items-center gap-4">
-          <div className="relative aspect-square w-2/5 shrink-0 overflow-hidden rounded-2xl bg-white">
+          <div className="h-[400px] w-[120px] shrink-0 overflow-hidden rounded-2xl bg-white">
             <Image
-              src="/images/mixes/lesnoy-jar.jpg"
+              src="/images/mixes-banner.jpg"
               alt="Ягодные миксы"
-              fill
-              sizes="150px"
-              className="object-contain"
+              width={120}
+              height={400}
+              className="h-full w-full object-contain"
             />
           </div>
           <div className="flex-1">
