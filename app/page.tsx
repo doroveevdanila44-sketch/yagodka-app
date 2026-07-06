@@ -127,8 +127,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 5 — Ягодная волна + CTA */}
-      <section className="bg-white">
+      {/* SECTION 5 — Ягодная волна */}
+      <section className="bg-white pb-8">
         <Image
           src="/images/berry-wave-banner.jpg"
           alt="Ягодная волна"
@@ -137,14 +137,6 @@ export default function HomePage() {
           sizes="100vw"
           className="block h-auto w-full"
         />
-        <div className="flex justify-center px-4 pb-16">
-          <Link
-            href="/catalog"
-            className="mt-6 rounded-full bg-brand px-10 py-2.5 text-base font-semibold text-white active:bg-accent"
-          >
-            Собрать ягоду
-          </Link>
-        </div>
       </section>
     </div>
   );
