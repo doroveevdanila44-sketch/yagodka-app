@@ -6,7 +6,7 @@ export default function SmoothieCard({ smoothie }: { smoothie: Smoothie }) {
   return (
     <Link
       href={`/smoothies/${smoothie.slug}`}
-      className="flex flex-col overflow-hidden rounded-2xl border border-light bg-white"
+      className="flex h-full flex-col overflow-hidden rounded-2xl border border-light bg-white"
     >
       <div className="relative aspect-square bg-white">
         <Image
@@ -18,10 +18,12 @@ export default function SmoothieCard({ smoothie }: { smoothie: Smoothie }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-3">
-        <h3 className="text-sm font-bold text-ink">{smoothie.name}</h3>
-        <p className="mt-0.5 text-xs text-gray-500">
-          {smoothie.composition.join(" · ")}
-        </p>
+        <div className="flex-grow">
+          <h3 className="text-sm font-bold text-ink">{smoothie.name}</h3>
+          <p className="mt-0.5 text-xs text-gray-500">
+            {smoothie.composition.join(" · ")}
+          </p>
+        </div>
         <p className="mt-1 text-base font-bold text-brand">
           от {formatPrice(smoothie.price)}
         </p>

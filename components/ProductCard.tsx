@@ -9,7 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-light bg-white">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-light bg-white">
       <Link href={`/product/${product.slug}`} className="block">
         <div className="relative aspect-square bg-white">
           <Image
@@ -22,13 +22,15 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
       </Link>
       <div className="flex flex-1 flex-col p-3">
-        <Link href={`/product/${product.slug}`}>
-          <h3 className="text-sm font-bold text-ink">{product.name}</h3>
-        </Link>
-        <p className="mt-0.5 text-xs text-gray-500">за 250 г</p>
-        <p className="mt-1 text-base font-bold text-brand">
-          {formatPrice(product.price)}
-        </p>
+        <div className="flex-grow">
+          <Link href={`/product/${product.slug}`}>
+            <h3 className="text-sm font-bold text-ink">{product.name}</h3>
+          </Link>
+          <p className="mt-0.5 text-xs text-gray-500">за 250 г</p>
+          <p className="mt-1 text-base font-bold text-brand">
+            {formatPrice(product.price)}
+          </p>
+        </div>
         <button
           onClick={() =>
             add({
